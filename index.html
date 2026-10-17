@@ -29,10 +29,10 @@
       text-align: center;
       background:
         linear-gradient(
-          rgba(255, 245, 248, 0.88),
-          rgba(255, 231, 240, 0.92)
+          rgba(255, 245, 248, 0.78),
+          rgba(255, 231, 240, 0.84)
         ),
-        url("alaya.jpeg") center 30% / cover fixed;
+        url("./alaya.jpeg") center 30% / cover fixed;
     }
 
     .invitacion {
@@ -89,6 +89,15 @@
       box-shadow: 0 8px 24px #b18b6333;
     }
 
+    .foto-marco img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 46% 46% 18px 18px;
+    }
+
     .foto-marco::after {
       content: "✧";
       position: absolute;
@@ -99,15 +108,6 @@
       background: white;
       border-radius: 50%;
       font-size: 25px;
-    }
-
-    .foto-marco <img src="./alaya.jpeg" alt="Alaya">
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      border-radius: 46% 46% 18px 18px;
     }
 
     .mensaje {
@@ -151,10 +151,9 @@
       font-size: 15px;
     }
 
-    input,
-    textarea {
+    input {
       width: 100%;
-      padding: 13px;
+      padding: 14px;
       border: 1px solid #e4c3d0;
       border-radius: 10px;
       background: white;
@@ -162,14 +161,8 @@
       font: 16px Arial, sans-serif;
     }
 
-    input:focus,
-    textarea:focus {
+    input:focus {
       outline: 2px solid #d9a5ba;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
     }
 
     button {
@@ -191,7 +184,35 @@
 
     .nota {
       color: #987d88;
-      font: 13px/1.6 Arial, sans-serif;
+      font: 13px/1.7 Arial, sans-serif;
+    }
+
+    .resultado {
+      margin-top: 22px;
+      padding: 20px 14px;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      background: #fffafb;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .resultado[hidden] {
+      display: none;
+    }
+
+    .resultado h3 {
+      color: var(--rosa);
+      font-size: 22px;
+      font-weight: normal;
+    }
+
+    .resultado .numero {
+      display: block;
+      margin: 10px 0;
+      color: var(--dorado);
+      font-size: 48px;
+      font-weight: bold;
     }
 
     footer {
@@ -219,6 +240,17 @@
         letter-spacing: 3px;
       }
     }
+
+    @media (max-width: 380px) {
+      .invitacion {
+        width: 94%;
+        padding: 32px 16px;
+      }
+
+      .etiqueta {
+        font-size: 11px;
+      }
+    }
   </style>
 </head>
 
@@ -228,13 +260,15 @@
     <div class="flores">♡ ❀ ♡</div>
 
     <p class="etiqueta">CON MUCHO AMOR TE INVITAMOS A</p>
-
     <p class="etiqueta">MI BAUTIZO</p>
 
     <h1>Alaya</h1>
 
     <div class="foto-marco">
-      <img src="alaya.jpeg" alt="Fotografía de Alaya">
+      <img
+        src="./alaya.jpeg"
+        alt="Fotografía de Alaya"
+      >
     </div>
 
     <h2>Un día lleno de amor y bendiciones</h2>
@@ -271,61 +305,41 @@
     </section>
 
     <section class="formulario">
-      <h2>Confirma tu asistencia</h2>
+      <div class="flores">♡ ✧ ♡</div>
+
+      <h2>Encuentra tu invitación</h2>
 
       <p class="nota">
-        ¡Nos hará muy felices contar contigo!
+        Escribe tu nombre completo para descubrir
+        cuántas personas pueden acompañarte
+        en este día tan especial.
       </p>
 
-      <form id="confirmacion">
-
-        <label for="responsable">
-          Nombre de quien confirma
+      <form id="buscar-invitacion">
+        <label for="nombre-invitado">
+          Nombre completo
         </label>
 
         <input
-          id="responsable"
-          name="responsable"
+          id="nombre-invitado"
           type="text"
-          placeholder="Ej. María López"
-          required
-        >
-
-        <label for="asistentes">
-          Nombre de las personas que asistirán
-        </label>
-
-        <textarea
-          id="asistentes"
-          name="asistentes"
-          placeholder="Ej. María López, Juan Pérez y Ana Pérez"
-          required
-        ></textarea>
-
-        <label for="cantidad">
-          Número total de asistentes
-        </label>
-
-        <input
-          id="cantidad"
-          name="cantidad"
-          type="number"
-          min="1"
-          max="50"
-          placeholder="Ej. 3"
+          placeholder="Escribe tu nombre completo"
+          autocomplete="name"
           required
         >
 
         <button type="submit">
-          Confirmar por WhatsApp ♡
+          Buscar mi invitación ♡
         </button>
-
       </form>
 
-      <p class="nota">
-        Al pulsar el botón, podrás enviar tu
-        confirmación por WhatsApp.
-      </p>
+      <div
+        id="resultado-invitacion"
+        class="resultado"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
     </section>
 
     <footer>
@@ -338,36 +352,79 @@
   </main>
 
   <script>
-    const formulario =
-      document.getElementById("confirmacion");
+    // LISTA DE INVITADOS
+    // Reemplaza los ejemplos con tus invitados reales.
+    // El cupo incluye a la persona que busca su nombre.
+
+    const invitados = [
+      { nombre: "María López Hernández", cupo: 4 },
+      { nombre: "Juan Pérez García", cupo: 2 },
+      { nombre: "Ana Martínez Cruz", cupo: 3 }
+
+      // Agrega más personas separándolas con comas:
+      // , { nombre: "Pedro Sánchez Ruiz", cupo: 5 }
+    ];
+
+    const formulario = document.getElementById(
+      "buscar-invitacion"
+    );
+
+    const campoNombre = document.getElementById(
+      "nombre-invitado"
+    );
+
+    const resultado = document.getElementById(
+      "resultado-invitacion"
+    );
+
+    function normalizarNombre(nombre) {
+      return nombre
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, " ")
+        .toLowerCase();
+    }
 
     formulario.addEventListener("submit", function(event) {
       event.preventDefault();
 
-      const responsable =
-        document.getElementById("responsable").value.trim();
+      const nombreBuscado = normalizarNombre(
+        campoNombre.value
+      );
 
-      const asistentes =
-        document.getElementById("asistentes").value.trim();
+      const invitado = invitados.find(function(persona) {
+        return normalizarNombre(persona.nombre) === nombreBuscado;
+      });
 
-      const cantidad =
-        document.getElementById("cantidad").value;
+      resultado.replaceChildren();
+      resultado.hidden = false;
 
-      // REEMPLAZA por el número que recibirá las confirmaciones.
-      // México: 52 + número, sin signo + ni espacios.
-      const telefono = "521234567890";
+      const titulo = document.createElement("h3");
+      const mensaje = document.createElement("p");
 
-      const mensaje =
-        "¡Confirmación para el bautizo de Alaya! 💗\n\n" +
-        "Persona que confirma: " + responsable + "\n" +
-        "Personas que asistirán: " + asistentes + "\n" +
-        "Total de asistentes: " + cantidad;
+      if (invitado) {
+        titulo.textContent = "¡Tu invitación está registrada! ♡";
 
-      const url =
-        "https://wa.me/" + telefono +
-        "?text=" + encodeURIComponent(mensaje);
+        const numero = document.createElement("span");
+        numero.className = "numero";
+        numero.textContent = invitado.cupo;
 
-      window.open(url, "_blank");
+        mensaje.textContent = invitado.cupo === 1
+          ? "persona invitada en total, incluyéndote."
+          : "personas invitadas en total, incluyéndote.";
+
+        resultado.append(titulo, numero, mensaje);
+      } else {
+        titulo.textContent = "Invitación no encontrada";
+
+        mensaje.textContent =
+          "No encontramos tu nombre en nuestra lista. " +
+          "Verifica que esté escrito correctamente o " +
+          "consulta con la familia.";
+
+        resultado.append(titulo, mensaje);
+      }
     });
   </script>
 </body>
