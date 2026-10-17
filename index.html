@@ -1,427 +1,374 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Mi Bautizo | Alaya</title>
-
   <meta name="theme-color" content="#fff5f8">
 
   <style>
+    :root {
+      --rosa: #c1849d;
+      --rosa-oscuro: #a96e88;
+      --rosa-claro: #fff0f5;
+      --dorado: #b18b63;
+      --texto: #765663;
+      --borde: #e9c6d2;
+    }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
-
       margin: 0;
-
-      font-family: Georgia, 'Times New Roman', serif;
-
-      background: #fff5f8;
-
-      color: #765663;
-
+      padding: 15px 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--texto);
       text-align: center;
-
+      background:
+        linear-gradient(
+          rgba(255, 245, 248, 0.88),
+          rgba(255, 231, 240, 0.92)
+        ),
+        url("alaya.jpeg") center 30% / cover fixed;
     }
 
     .invitacion {
-
+      position: relative;
       width: min(92%, 620px);
-
-      margin: 30px auto;
-
-      padding: 35px 24px;
-
-      background: #fffdfd;
-
-      border: 2px solid #e9c6d2;
-
-      outline: 1px solid #e9c6d2;
-
+      margin: 20px auto;
+      padding: 38px 24px;
+      background: rgba(255, 253, 253, 0.96);
+      border: 2px solid var(--borde);
+      outline: 1px solid var(--borde);
       outline-offset: -9px;
-
-      border-radius: 180px 180px 24px 24px;
-
-      box-shadow: 0 12px 35px #d8b8c433;
-
+      border-radius: 180px 180px 28px 28px;
+      box-shadow: 0 14px 40px #a96e8833;
     }
 
     .flores {
-
-      font-size: 28px;
-
-      color: #c18ba0;
-
+      margin: 8px 0;
+      color: var(--rosa);
+      font-size: 27px;
       letter-spacing: 8px;
-
     }
 
     .etiqueta {
-
-      margin-top: 20px;
-
-      letter-spacing: 6px;
-
-      color: #b18b63;
-
+      margin-top: 22px;
+      color: var(--dorado);
       font-size: 13px;
-
+      letter-spacing: 5px;
     }
 
     h1 {
-
-      margin: 15px 0;
-
+      margin: 12px 0;
+      color: var(--rosa);
       font-size: clamp(48px, 12vw, 76px);
-
       font-weight: normal;
-
       font-style: italic;
-
-      color: #c1849d;
-
+      text-shadow: 1px 2px 0 #f8e1e9;
     }
 
     h2 {
-
-      color: #b18b63;
-
+      color: var(--dorado);
       font-size: 22px;
-
       font-weight: normal;
+    }
 
+    .foto-marco {
+      position: relative;
+      width: min(75%, 300px);
+      aspect-ratio: 4 / 5;
+      margin: 25px auto 30px;
+      padding: 7px;
+      background: #fff9fb;
+      border: 2px solid var(--dorado);
+      border-radius: 48% 48% 24px 24px;
+      box-shadow: 0 8px 24px #b18b6333;
+    }
+
+    .foto-marco::after {
+      content: "✧";
+      position: absolute;
+      top: -17px;
+      right: -13px;
+      padding: 2px 6px;
+      color: var(--dorado);
+      background: white;
+      border-radius: 50%;
+      font-size: 25px;
+    }
+
+    .foto-marco img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 46% 46% 18px 18px;
     }
 
     .mensaje {
-
       max-width: 420px;
-
       margin: 24px auto;
-
-      line-height: 1.9;
-
       font-size: 17px;
+      line-height: 1.9;
+    }
 
+    .separador {
+      margin: 25px 0;
+      color: var(--rosa);
+      font-size: 25px;
+      letter-spacing: 8px;
     }
 
     .datos {
-
-      margin: 25px 0;
-
+      margin: 28px 0;
       padding: 20px 10px;
-
       border-top: 1px solid #ead3dc;
-
       border-bottom: 1px solid #ead3dc;
+      line-height: 1.8;
+    }
 
-      line-height: 2;
-
+    .dato {
+      margin: 20px 0;
     }
 
     .formulario {
-
       margin-top: 30px;
-
       padding: 24px 16px;
-
-      background: #fff5f8;
-
-      border-radius: 18px;
-
+      background: var(--rosa-claro);
+      border: 1px solid #f0d9e2;
+      border-radius: 22px;
     }
 
     label {
-
       display: block;
-
-      text-align: left;
-
       margin: 16px 0 7px;
-
+      text-align: left;
       font-size: 15px;
-
     }
 
-    input, textarea {
-
+    input,
+    textarea {
       width: 100%;
-
       padding: 13px;
-
       border: 1px solid #e4c3d0;
-
       border-radius: 10px;
-
       background: white;
-
-      color: #765663;
-
+      color: var(--texto);
       font: 16px Arial, sans-serif;
+    }
 
+    input:focus,
+    textarea:focus {
+      outline: 2px solid #d9a5ba;
     }
 
     textarea {
-
       min-height: 100px;
-
       resize: vertical;
-
     }
 
     button {
-
       width: 100%;
-
       margin-top: 20px;
-
       padding: 15px;
-
       border: none;
-
       border-radius: 30px;
-
-      background: #c1849d;
-
+      background: var(--rosa);
       color: white;
-
       font-size: 16px;
-
       cursor: pointer;
-
+      transition: background 0.2s;
     }
 
-    button:hover { background: #a96e88; }
+    button:hover {
+      background: var(--rosa-oscuro);
+    }
 
     .nota {
-
-      font: 13px/1.6 Arial, sans-serif;
-
       color: #987d88;
-
+      font: 13px/1.6 Arial, sans-serif;
     }
 
     footer {
-
-      margin-top: 25px;
-
-      color: #b18b63;
-
+      margin-top: 28px;
+      color: var(--dorado);
       font-style: italic;
-
+      line-height: 1.8;
     }
 
-  </style>
+    .corazon {
+      color: var(--rosa);
+      font-size: 23px;
+    }
 
+    @media (max-width: 480px) {
+      .invitacion {
+        padding: 34px 20px;
+      }
+
+      .mensaje {
+        font-size: 16px;
+      }
+
+      .etiqueta {
+        letter-spacing: 3px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
   <main class="invitacion">
 
     <div class="flores">♡ ❀ ♡</div>
+
+    <p class="etiqueta">CON MUCHO AMOR TE INVITAMOS A</p>
 
     <p class="etiqueta">MI BAUTIZO</p>
 
     <h1>Alaya</h1>
 
+    <div class="foto-marco">
+      <img src="alaya.jpeg" alt="Fotografía de Alaya">
+    </div>
+
     <h2>Un día lleno de amor y bendiciones</h2>
 
     <p class="mensaje">
-
       Con mucha alegría en nuestros corazones,
-
       queremos invitarte a celebrar un momento
-
       muy especial en la vida de nuestra pequeña
-
       Alaya: el día de su bautizo.
-
       <br><br>
-
       Nos encantará compartir contigo esta
-
       hermosa bendición.
-
     </p>
 
-    <div class="flores">✧ 🕊️ ✧</div>
+    <div class="separador">✧ 🕊️ ✧</div>
 
     <section class="datos">
-
       <h2>La celebración</h2>
 
-      <p><strong>Fecha:</strong><br>
+      <p class="dato">
+        <strong>Fecha:</strong><br>
+        [Escribe la fecha]
+      </p>
 
-        [27 De diciembre]</p>
+      <p class="dato">
+        <strong>Hora:</strong><br>
+        [Escribe la hora]
+      </p>
 
-      <p><strong>Hora:</strong><br>
-
-        [3:00 P.M.]</p>
-
-      <p><strong>Lugar:</strong><br>
-
-        [Nombre y dirección del lugar]</p>
-
+      <p class="dato">
+        <strong>Lugar:</strong><br>
+        [Nombre y dirección del lugar]
+      </p>
     </section>
 
     <section class="formulario">
-
       <h2>Confirma tu asistencia</h2>
 
       <p class="nota">
-
         ¡Nos hará muy felices contar contigo!
-
       </p>
 
       <form id="confirmacion">
 
         <label for="responsable">
-
           Nombre de quien confirma
-
         </label>
 
         <input
-
           id="responsable"
-
           name="responsable"
-
           type="text"
-
           placeholder="Ej. María López"
-
           required
-
         >
 
         <label for="asistentes">
-
           Nombre de las personas que asistirán
-
         </label>
 
         <textarea
-
           id="asistentes"
-
           name="asistentes"
-
           placeholder="Ej. María López, Juan Pérez y Ana Pérez"
-
           required
-
         ></textarea>
 
         <label for="cantidad">
-
           Número total de asistentes
-
         </label>
 
         <input
-
           id="cantidad"
-
           name="cantidad"
-
           type="number"
-
           min="1"
-
           max="50"
-
           placeholder="Ej. 3"
-
           required
-
         >
 
         <button type="submit">
-
           Confirmar por WhatsApp ♡
-
         </button>
 
       </form>
 
       <p class="nota">
-
         Al pulsar el botón, podrás enviar tu
-
         confirmación por WhatsApp.
-
       </p>
-
     </section>
 
     <footer>
-
       Con cariño, gracias por ser parte de
-
       este momento tan especial.
 
-      <p>♡ Alaya ♡</p>
-
+      <p class="corazon">♡ Alaya ♡</p>
     </footer>
 
   </main>
 
   <script>
-
-    const formulario = document.getElementById("confirmacion");
+    const formulario =
+      document.getElementById("confirmacion");
 
     formulario.addEventListener("submit", function(event) {
-
       event.preventDefault();
 
       const responsable =
-
         document.getElementById("responsable").value.trim();
 
       const asistentes =
-
         document.getElementById("asistentes").value.trim();
 
       const cantidad =
-
         document.getElementById("cantidad").value;
 
-      // REEMPLAZA con tu número, incluyendo el código del país.
-
-      // México: 52 + número, sin el signo + ni espacios.
-
+      // REEMPLAZA por el número que recibirá las confirmaciones.
+      // México: 52 + número, sin signo + ni espacios.
       const telefono = "521234567890";
 
       const mensaje =
-
         "¡Confirmación para el bautizo de Alaya! 💗\n\n" +
-
         "Persona que confirma: " + responsable + "\n" +
-
         "Personas que asistirán: " + asistentes + "\n" +
-
         "Total de asistentes: " + cantidad;
 
       const url =
-
-        "https://wa.me/" + 2871442659 +
-
+        "https://wa.me/" + telefono +
         "?text=" + encodeURIComponent(mensaje);
 
       window.open(url, "_blank");
-
     });
-
   </script>
-
 </body>
-
 </html>
