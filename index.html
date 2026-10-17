@@ -1,175 +1,427 @@
-
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEW MOMENT</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background: #080808;
-            color: white;
-            min-height: 100vh;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 8%;
-            border-bottom: 1px solid #222;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav a {
-            color: #aaa;
-            text-decoration: none;
-            margin-left: 25px;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            color: white;
-        }
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-        }
-        .hero h1 {
-            font-size: clamp(45px, 9vw, 90px);
-            margin-bottom: 20px;
-            animation: aparecer 1s ease;
-        }
-        .hero h1 span {
-            color: #7c3cff;
-        }
-        .hero p {
-            color: #aaa;
-            font-size: 20px;
-            max-width: 600px;
-            margin: auto;
-            line-height: 1.6;
-        }
-        .boton {
-            display: inline-block;
-            margin-top: 35px;
-            padding: 15px 30px;
-            background: #7c3cff;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .boton:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 30px #7c3cff;
-        }
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 50px 8%;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: #111;
-            border: 1px solid #222;
-            border-radius: 20px;
-            padding: 30px;
-            width: 280px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: #7c3cff;
-        }
-        .card h2 {
-            margin-bottom: 15px;
-        }
-        .card p {
-            color: #999;
-            line-height: 1.5;
-        }
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            border-top: 1px solid #222;
-        }
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mi Bautizo | Alaya</title>
+
+  <meta name="theme-color" content="#fff5f8">
+
+  <style>
+
+    * { box-sizing: border-box; }
+
+    body {
+
+      margin: 0;
+
+      font-family: Georgia, 'Times New Roman', serif;
+
+      background: #fff5f8;
+
+      color: #765663;
+
+      text-align: center;
+
+    }
+
+    .invitacion {
+
+      width: min(92%, 620px);
+
+      margin: 30px auto;
+
+      padding: 35px 24px;
+
+      background: #fffdfd;
+
+      border: 2px solid #e9c6d2;
+
+      outline: 1px solid #e9c6d2;
+
+      outline-offset: -9px;
+
+      border-radius: 180px 180px 24px 24px;
+
+      box-shadow: 0 12px 35px #d8b8c433;
+
+    }
+
+    .flores {
+
+      font-size: 28px;
+
+      color: #c18ba0;
+
+      letter-spacing: 8px;
+
+    }
+
+    .etiqueta {
+
+      margin-top: 20px;
+
+      letter-spacing: 6px;
+
+      color: #b18b63;
+
+      font-size: 13px;
+
+    }
+
+    h1 {
+
+      margin: 15px 0;
+
+      font-size: clamp(48px, 12vw, 76px);
+
+      font-weight: normal;
+
+      font-style: italic;
+
+      color: #c1849d;
+
+    }
+
+    h2 {
+
+      color: #b18b63;
+
+      font-size: 22px;
+
+      font-weight: normal;
+
+    }
+
+    .mensaje {
+
+      max-width: 420px;
+
+      margin: 24px auto;
+
+      line-height: 1.9;
+
+      font-size: 17px;
+
+    }
+
+    .datos {
+
+      margin: 25px 0;
+
+      padding: 20px 10px;
+
+      border-top: 1px solid #ead3dc;
+
+      border-bottom: 1px solid #ead3dc;
+
+      line-height: 2;
+
+    }
+
+    .formulario {
+
+      margin-top: 30px;
+
+      padding: 24px 16px;
+
+      background: #fff5f8;
+
+      border-radius: 18px;
+
+    }
+
+    label {
+
+      display: block;
+
+      text-align: left;
+
+      margin: 16px 0 7px;
+
+      font-size: 15px;
+
+    }
+
+    input, textarea {
+
+      width: 100%;
+
+      padding: 13px;
+
+      border: 1px solid #e4c3d0;
+
+      border-radius: 10px;
+
+      background: white;
+
+      color: #765663;
+
+      font: 16px Arial, sans-serif;
+
+    }
+
+    textarea {
+
+      min-height: 100px;
+
+      resize: vertical;
+
+    }
+
+    button {
+
+      width: 100%;
+
+      margin-top: 20px;
+
+      padding: 15px;
+
+      border: none;
+
+      border-radius: 30px;
+
+      background: #c1849d;
+
+      color: white;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+    }
+
+    button:hover { background: #a96e88; }
+
+    .nota {
+
+      font: 13px/1.6 Arial, sans-serif;
+
+      color: #987d88;
+
+    }
+
+    footer {
+
+      margin-top: 25px;
+
+      color: #b18b63;
+
+      font-style: italic;
+
+    }
+
+  </style>
+
 </head>
+
 <body>
-    <header>
-        <div class="logo">New moment</div>
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="#sobre-mi">un hombre normal</a>
-            <a href="#contacto">yahelvalentin555@gmail.com</a>
-        </nav>
-    </header>
-    <section class="hero">
-        <div>
-            <h1>Hola, soy <span>TÚ</span> 👋</h1>
-            <p>
-                Bienvenido a mi página web.
-                Aquí podrás conocerme, ver mis proyectos
-                y descubrir todo lo que estoy creando.
-            </p>
-            <a href="#sobre-mi" class="boton">
-                Conocer más
-            </a>
-        </div>
-    </section>
-    <section class="cards" id="sobre-mi">
-        <div class="card">
-            <h2>👤 Sobre mí</h2>
-            <p>
-                Aquí puedes escribir una pequeña descripción
-                sobre ti y lo que te gusta.
-            </p>
-        </div>
-        <a href="proyectos.html" class="card">
-    <h2>🚀 Proyectos</h2>
-    <p>
-        Nuevo sitio para posibles ventas futuras y creacion de productos
-       </h1> 
-            COMING SOON...
+
+  <main class="invitacion">
+
+    <div class="flores">♡ ❀ ♡</div>
+
+    <p class="etiqueta">MI BAUTIZO</p>
+
+    <h1>Alaya</h1>
+
+    <h2>Un día lleno de amor y bendiciones</h2>
+
+    <p class="mensaje">
+
+      Con mucha alegría en nuestros corazones,
+
+      queremos invitarte a celebrar un momento
+
+      muy especial en la vida de nuestra pequeña
+
+      Alaya: el día de su bautizo.
+
+      <br><br>
+
+      Nos encantará compartir contigo esta
+
+      hermosa bendición.
+
     </p>
-</a>
-            </p>
-        </div>
-        <div class="card">
-            <h2>📱 Redes</h2>
-            <p>
-                Agrega tus redes sociales para que
-                las personas puedan encontrarte.
-            </p>
-        </div>
+
+    <div class="flores">✧ 🕊️ ✧</div>
+
+    <section class="datos">
+
+      <h2>La celebración</h2>
+
+      <p><strong>Fecha:</strong><br>
+
+        [27 De diciembre]</p>
+
+      <p><strong>Hora:</strong><br>
+
+        [3:00 P.M.]</p>
+
+      <p><strong>Lugar:</strong><br>
+
+        [Nombre y dirección del lugar]</p>
+
     </section>
-    <footer id="contacto">
-        © 2026 Mi Página · Hecho por mí 🚀
+
+    <section class="formulario">
+
+      <h2>Confirma tu asistencia</h2>
+
+      <p class="nota">
+
+        ¡Nos hará muy felices contar contigo!
+
+      </p>
+
+      <form id="confirmacion">
+
+        <label for="responsable">
+
+          Nombre de quien confirma
+
+        </label>
+
+        <input
+
+          id="responsable"
+
+          name="responsable"
+
+          type="text"
+
+          placeholder="Ej. María López"
+
+          required
+
+        >
+
+        <label for="asistentes">
+
+          Nombre de las personas que asistirán
+
+        </label>
+
+        <textarea
+
+          id="asistentes"
+
+          name="asistentes"
+
+          placeholder="Ej. María López, Juan Pérez y Ana Pérez"
+
+          required
+
+        ></textarea>
+
+        <label for="cantidad">
+
+          Número total de asistentes
+
+        </label>
+
+        <input
+
+          id="cantidad"
+
+          name="cantidad"
+
+          type="number"
+
+          min="1"
+
+          max="50"
+
+          placeholder="Ej. 3"
+
+          required
+
+        >
+
+        <button type="submit">
+
+          Confirmar por WhatsApp ♡
+
+        </button>
+
+      </form>
+
+      <p class="nota">
+
+        Al pulsar el botón, podrás enviar tu
+
+        confirmación por WhatsApp.
+
+      </p>
+
+    </section>
+
+    <footer>
+
+      Con cariño, gracias por ser parte de
+
+      este momento tan especial.
+
+      <p>♡ Alaya ♡</p>
+
     </footer>
+
+  </main>
+
+  <script>
+
+    const formulario = document.getElementById("confirmacion");
+
+    formulario.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const responsable =
+
+        document.getElementById("responsable").value.trim();
+
+      const asistentes =
+
+        document.getElementById("asistentes").value.trim();
+
+      const cantidad =
+
+        document.getElementById("cantidad").value;
+
+      // REEMPLAZA con tu número, incluyendo el código del país.
+
+      // México: 52 + número, sin el signo + ni espacios.
+
+      const telefono = "521234567890";
+
+      const mensaje =
+
+        "¡Confirmación para el bautizo de Alaya! 💗\n\n" +
+
+        "Persona que confirma: " + responsable + "\n" +
+
+        "Personas que asistirán: " + asistentes + "\n" +
+
+        "Total de asistentes: " + cantidad;
+
+      const url =
+
+        "https://wa.me/" + 2871442659 +
+
+        "?text=" + encodeURIComponent(mensaje);
+
+      window.open(url, "_blank");
+
+    });
+
+  </script>
+
 </body>
+
 </html>
