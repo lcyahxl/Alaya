@@ -10,7 +10,7 @@
     :root {
       --rosa: #c1849d;
       --rosa-oscuro: #a96e88;
-      --rosa-claro: #fff0f5;
+      --rosa-claro: rgba(255, 240, 245, 0.35);
       --dorado: #b18b63;
       --texto: #765663;
       --borde: #e9c6d2;
@@ -27,20 +27,23 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--texto);
       text-align: center;
-      background:
-        linear-gradient(
-          rgba(255, 245, 248, 0.78),
-          rgba(255, 231, 240, 0.84)
-        ),
-        url("./alaya.jpeg") center 30% / cover fixed;
+      background: #fff5f4;
     }
 
+    /* FONDO FLORAL DE TODA LA INVITACIÓN */
     .invitacion {
       position: relative;
+      isolation: isolate;
       width: min(92%, 620px);
       margin: 20px auto;
       padding: 38px 24px;
-      background: rgba(255, 253, 253, 0.96);
+
+      background-color: #fff5f4;
+      background-image: url("./fondo-flores.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
       border: 2px solid var(--borde);
       outline: 1px solid var(--borde);
       outline-offset: -9px;
@@ -83,7 +86,7 @@
       aspect-ratio: 4 / 5;
       margin: 25px auto 30px;
       padding: 7px;
-      background: #fff9fb;
+      background: rgba(255, 249, 251, 0.85);
       border: 2px solid var(--dorado);
       border-radius: 48% 48% 24px 24px;
       box-shadow: 0 8px 24px #b18b6333;
@@ -136,11 +139,17 @@
       margin: 20px 0;
     }
 
+    .valor-dato {
+      margin: 0;
+      color: #d86b91;
+    }
+
+    /* FORMULARIO TRANSLÚCIDO PARA VER LAS FLORES */
     .formulario {
       margin-top: 30px;
       padding: 24px 16px;
-      background: var(--rosa-claro);
-      border: 1px solid #f0d9e2;
+      background: rgba(255, 240, 245, 0.35);
+      border: 1px solid rgba(240, 217, 226, 0.85);
       border-radius: 22px;
     }
 
@@ -156,7 +165,7 @@
       padding: 14px;
       border: 1px solid #e4c3d0;
       border-radius: 10px;
-      background: white;
+      background: rgba(255, 255, 255, 0.88);
       color: var(--texto);
       font: 16px Arial, sans-serif;
     }
@@ -192,7 +201,7 @@
       padding: 20px 14px;
       border: 1px solid var(--borde);
       border-radius: 16px;
-      background: #fffafb;
+      background: rgba(255, 250, 251, 0.78);
       line-height: 1.8;
       overflow-wrap: anywhere;
     }
@@ -265,10 +274,7 @@
     <h1>Alaya</h1>
 
     <div class="foto-marco">
-      <img
-        src="./alaya.jpeg"
-        alt="Fotografía de Alaya"
-      >
+      <img src="./alaya.jpeg" alt="Fotografía de Alaya">
     </div>
 
     <h2>Un día lleno de amor y bendiciones</h2>
@@ -288,27 +294,27 @@
     <section class="datos">
       <h2>La celebración</h2>
 
-      <p class="dato">
-        <strong>Fecha:</strong><br>
-         <p style="color: #d86b91;">[27 de diciembre]
-      </p>
+      <div class="dato">
+        <strong>Fecha:</strong>
+        <p class="valor-dato">[27 de diciembre]</p>
+      </div>
 
-      <p class="dato">
-        <strong>Hora:</strong><br>
-        <p style="color: #d86b91;">[3:00 P.M]
-      </p>
+      <div class="dato">
+        <strong>Hora:</strong>
+        <p class="valor-dato">[3:00 P.M]</p>
+      </div>
 
-     <p class="dato">
-  <strong>Lugar:</strong><br>
-  <a href="https://maps.apple.com/place?coordinate=18.171115,-96.038488&name=Avenida%20Adolfo%20L%C3%B3pez%20Mateos%2075&map=explore"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="color: inherit; text-decoration: none;">
-    <p style="color: #d86b91;">[👉Dirección completa del lugar👈]</p>
-  </a>
-</p>
-</a>
-      </p>
+      <div class="dato">
+        <strong>Lugar:</strong>
+        <p>
+          <a
+            href="https://maps.apple.com/place?coordinate=18.171115,-96.038488&name=Avenida%20Adolfo%20L%C3%B3pez%20Mateos%2075&map=explore"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: inherit; text-decoration: none;"
+          ><span class="valor-dato">[👉Dirección completa del lugar👈]</span></a>
+        </p>
+      </div>
     </section>
 
     <section class="formulario">
@@ -360,7 +366,6 @@
 
   <script>
     // LISTA DE INVITADOS
-    // Reemplaza los ejemplos con tus invitados reales.
     // El cupo incluye a la persona que busca su nombre.
 
     const invitados = [
@@ -369,7 +374,7 @@
       { nombre: "Ariadna Marily Salomon Reyes", cupo: 1 },
       { nombre: "Yahel", cupo: 1 }
 
-      // Agrega más personas separándolas con comas:
+      // Agrega más invitados separándolos con comas:
       // , { nombre: "Pedro Sánchez Ruiz", cupo: 5 }
     ];
 
