@@ -262,6 +262,20 @@
         font-size: 11px;
       }
     }
+    .reproductor-musica {
+  margin: 20px auto;
+  padding: 12px;
+  border: 1px solid #e9c6d2;
+  border-radius: 18px;
+  background: rgba(255, 240, 245, 0.45);
+}
+
+.reproductor-musica audio {
+  display: block;
+  width: 100%;
+  accent-color: #c1849d;
+}
+</style>
   </style>
 </head>
 
@@ -293,6 +307,13 @@
     </p>
 
     <div class="separador">✧ 🌸 ✧</div>
+    
+    <div class="reproductor-musica">
+  <audio controls preload="none">
+    <source src="./cancion.mp3" type="audio/mpeg">
+  </audio>
+      
+</div>
 
     <section class="datos">
       <h2>La celebración</h2>
